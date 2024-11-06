@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const TuitionEditor = dynamic(() => import("../../components/TuitionEditor"), {
   ssr: false,
 });
@@ -88,10 +89,12 @@ const Tuition = () => {
 
   return (
     <div className="p-8">
+      <Link className="border p-3 rounded hover:bg-gray-200 mr-7 ml-8" href="/">
+        Back
+      </Link>{" "}
       <h1 className="text-2xl font-bold mb-4 text-center">
         Học phí và Chính sách
       </h1>
-
       <div className="mt-4">
         {tuitionData && (
           <TuitionEditor
@@ -100,7 +103,6 @@ const Tuition = () => {
           />
         )}
       </div>
-
       <div className="mt-4 text-center">
         <button
           onClick={handleSave}
