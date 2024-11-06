@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import dynamic from "next/dynamic";
+const TuitionEditor = dynamic(() => import("../../components/TuitionEditor"), {
+  ssr: false,
+});
 const Tuition = () => {
   const [tuitionData, setTuitionData] = useState(null); // State to store tuition data
   const [isSaving, setIsSaving] = useState(false); // State to manage saving status
@@ -93,10 +94,9 @@ const Tuition = () => {
 
       <div className="mt-4">
         {tuitionData && (
-          <CKEditor
-            editor={ClassicEditor}
+          <TuitionEditor
             data={tuitionData.tuitionData} // Pass tuition data to CKEditor
-            onChange={handleEditorChange} // Update data when CKEditor changes
+            onChange={handleEditorChange}
           />
         )}
       </div>
