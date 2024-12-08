@@ -13,9 +13,7 @@ const EditNews = () => {
     const fetchNews = async () => {
       if (!id) return;
 
-      const res = await fetch(
-        `https://backendminiapp.onrender.com/api/news/${id}`
-      );
+      const res = await fetch(`http://app:3009/api/news/${id}`);
       if (res.ok) {
         const data = await res.json();
         setTitle(data.title);
@@ -30,16 +28,13 @@ const EditNews = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      `https://backendminiapp.onrender.com/api/news/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, content, date: new Date() }),
-      }
-    );
+    const res = await fetch(`http://app:3009/api/news/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, content, date: new Date() }),
+    });
 
     if (res.ok) {
       router.push("/news");
@@ -52,9 +47,12 @@ const EditNews = () => {
     <div className="p-8 max-w-[800px] mx-auto">
       <h1 className="text-2xl font-bold mb-6 flex justify-center">Edit News</h1>
       <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
-          Back
-        </a>
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+        Back
+      </a>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
         <div className="mb-4">
           <input
             type="text"

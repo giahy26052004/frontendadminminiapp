@@ -6,7 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 const EditMajor = () => {
   const { id } = useParams();
   const router = useRouter();
-  
+
   const [khoi_nganh, setKhoiNganh] = useState("");
   const [ten_nganh, setTenNganh] = useState("");
   const [details_nganh, setDetailsNganh] = useState({
@@ -22,12 +22,9 @@ const EditMajor = () => {
     const fetchMajor = async () => {
       if (!id) return;
 
-      const res = await fetch(
-        `https://backendminiapp.onrender.com/api/majors/${id}`,
-        {
-          method: "GET",
-        }
-      );
+      const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
+        method: "GET",
+      });
       if (res.ok) {
         const data = await res.json();
         setKhoiNganh(data.khoi_nganh);
@@ -43,16 +40,13 @@ const EditMajor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      `https://backendminiapp.onrender.com/api/majors/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ khoi_nganh, ten_nganh, details_nganh }),
-      }
-    );
+    const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ khoi_nganh, ten_nganh, details_nganh }),
+    });
 
     if (res.ok) {
       router.push("/majors");
@@ -63,12 +57,16 @@ const EditMajor = () => {
 
   return (
     <div className="p-8 max-w-[800px] mx-auto">
-
-      <h1 className="text-2xl font-bold mb-6 flex justify-center">Edit Major</h1>
+      <h1 className="text-2xl font-bold mb-6 flex justify-center">
+        Edit Major
+      </h1>
       <a className="border p-3 rounded hover:bg-gray-200 " href="/">
-          Back
-        </a>
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+        Back
+      </a>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
         <div className="mb-4">
           <input
             type="text"

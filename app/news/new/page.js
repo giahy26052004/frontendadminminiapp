@@ -9,7 +9,7 @@ const New = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://backendminiapp.onrender.com/api/news", {
+      const res = await fetch(`http://localhost:3009/api/news`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,9 +27,12 @@ const New = () => {
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4 flex justify-center">Add News</h1>
       <a className="border p-3 rounded hover:bg-gray-200 " href="/">
-          Back
-        </a>
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+        Back
+      </a>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
         <div className="mb-4">
           <input
             type="text"

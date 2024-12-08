@@ -24,7 +24,7 @@ const AddMajor = () => {
     setSuccess(false);
 
     try {
-      const res = await fetch(`https://backendminiapp.onrender.com/api/majors`, {
+      const res = await fetch(`http://localhost:3009/api/majors`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,12 +62,14 @@ const AddMajor = () => {
 
   return (
     <div className="p-8 max-w-[800px] mx-auto">
-      
       <h1 className="text-2xl font-bold mb-6 flex justify-center">Add Major</h1>
       <a className="border p-3 rounded hover:bg-gray-200 " href="/">
-          Back
-        </a>
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+        Back
+      </a>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
         <div className="mb-4">
           <input
             type="text"
@@ -104,7 +106,9 @@ const AddMajor = () => {
           <input
             type="text"
             value={details.muc_tieu}
-            onChange={(e) => setDetails({ ...details, muc_tieu: e.target.value })}
+            onChange={(e) =>
+              setDetails({ ...details, muc_tieu: e.target.value })
+            }
             placeholder="Mục tiêu"
             required
             className="border border-gray-300 rounded p-2 w-full"
@@ -153,7 +157,9 @@ const AddMajor = () => {
           <input
             type="text"
             value={details.bang_cap}
-            onChange={(e) => setDetails({ ...details, bang_cap: e.target.value })}
+            onChange={(e) =>
+              setDetails({ ...details, bang_cap: e.target.value })
+            }
             placeholder="Bằng cấp"
             required
             className="border border-gray-300 rounded p-2 w-full"
@@ -167,7 +173,9 @@ const AddMajor = () => {
         </button>
       </form>
       {error && <p className="text-red-500 mt-4">{error}</p>}
-      {success && <p className="text-green-500 mt-4">Major added successfully!</p>}
+      {success && (
+        <p className="text-green-500 mt-4">Major added successfully!</p>
+      )}
     </div>
   );
 };

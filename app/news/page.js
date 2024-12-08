@@ -10,7 +10,8 @@ const News = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const res = await fetch("https://backendminiapp.onrender.com/api/news");
+      console.log(process.env.API_URL);
+      const res = await fetch(`http://localhost:3009/api/news`);
       const data = await res.json();
       setNewsList(data);
     };
@@ -18,7 +19,7 @@ const News = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const res = await fetch(`https://backendminiapp.onrender.com/api/news/${id}`, {
+    const res = await fetch(`http://localhost:3009/api/news/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
@@ -30,19 +31,22 @@ const News = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4 flex justify-center">
-        News{" "}
-     
-      </h1>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">News </h1>
       <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
-          Back
-        </a>
-      <Link className="bg-blue-500 text-white py-2 px-4 rounded mb-4 inline-block" href="/news/new">
+        Back
+      </a>
+      <Link
+        className="bg-blue-500 text-white py-2 px-4 rounded mb-4 inline-block"
+        href="/news/new"
+      >
         Add News
       </Link>
       <div className="flex flex-wrap gap-4">
         {newsList.map((news) => (
-          <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex-1 min-w-[200px]" key={news._id}>
+          <div
+            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex-1 min-w-[200px]"
+            key={news._id}
+          >
             <div className="bg-slate-300 p-4 rounded">
               <Link href={`/news/${news._id}`} className="block mb-2">
                 <strong>Title:</strong> {news.title}
@@ -55,7 +59,9 @@ const News = () => {
               </Link>
 
               <Link href={`/news/edit/${news._id}`} className="mr-2">
-                <button className="bg-yellow-500 text-white py-1 px-2 rounded">Edit</button>
+                <button className="bg-yellow-500 text-white py-1 px-2 rounded">
+                  Edit
+                </button>
               </Link>
               <button
                 onClick={() => handleDelete(news._id)}
