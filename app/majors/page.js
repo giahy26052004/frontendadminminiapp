@@ -53,20 +53,20 @@ const Majors = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Majors</h1>
+      <h1 className="text-3xl font-bold mb-6">Ngành học </h1>
       <div className="mb-8 flex space-x-4">
         <Link
           href="/"
           className="px-4 py-2 border border-gray-400 rounded-lg hover:bg-gray-200 transition"
         >
-          Back{" "}
+          Quay lại{" "}
         </Link>
         <Link
           href="/majors/new"
           className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition"
         >
           {" "}
-          Add Major
+          Thêm ngành học
         </Link>
       </div>
 
@@ -106,14 +106,14 @@ const Majors = () => {
             <div className="mt-4 flex justify-between">
               <Link href={`/majors/edit/${major._id}`}>
                 <button className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 transition">
-                  Edit
+                  Sửa
                 </button>
               </Link>
               <button
                 onClick={() => handleDelete(major._id)}
                 className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition"
               >
-                Delete
+                Xóa
               </button>
             </div>
           </div>

@@ -64,9 +64,11 @@ const EditNews = () => {
 
   return (
     <div className="p-8 max-w-[800px] mx-auto">
-      <h1 className="text-2xl font-bold mb-6 flex justify-center">Edit News</h1>
+      <h1 className="text-2xl font-bold mb-6 flex justify-center">
+        Chỉnh sửa tin tức
+      </h1>
       <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
-        Back
+        Quay lại
       </a>
       <form
         onSubmit={handleSubmit}
@@ -78,7 +80,7 @@ const EditNews = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="News title"
+            placeholder="Tiêu đề tin tức"
             required
             className="border border-gray-300 rounded p-2 w-full"
           />
@@ -88,7 +90,7 @@ const EditNews = () => {
             type="text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="News content"
+            placeholder="Nội dung tin tức"
             required
             className="border border-gray-300 rounded p-2 w-full"
           />
@@ -96,7 +98,7 @@ const EditNews = () => {
 
         {newsData && newsData.file && (
           <div className="mb-10 w-[200px] h-[200px]">
-            <strong>Image:</strong>
+            <strong>Hình ảnh:</strong>
             <img
               src={`https://backendminiapp.onrender.com/${newsData.file}`} // Correct URL for the image
               alt={newsData.title}
@@ -107,7 +109,7 @@ const EditNews = () => {
 
         <div className="mb-4">
           <label htmlFor="file-upload" className="block mb-2">
-            Upload New Image (optional):
+            Thay đổi ảnh mới (ảnh cũ):
           </label>
           <input
             type="file"
@@ -121,7 +123,7 @@ const EditNews = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
         >
-          Update News
+          Thay đổi tin tức
         </button>
       </form>
     </div>

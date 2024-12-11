@@ -44,15 +44,15 @@ const News = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4 flex justify-center">News</h1>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">Tin tức</h1>
       <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
-        Back
+        Quay lại
       </a>
       <Link
         className="bg-blue-500 text-white py-2 px-4 rounded mb-4 inline-block"
         href="/news/new"
       >
-        Add News
+        Thêm mới tin tức
       </Link>
       <div className="flex flex-wrap gap-4">
         {newsList.map((news) => (
@@ -62,10 +62,10 @@ const News = () => {
           >
             <div className="bg-slate-300 p-4 rounded">
               <Link href={`/news/${news._id}`} className="block mb-2">
-                <strong>Title:</strong> {news.title}
+                <strong>Tiêu đề :</strong> {news.title}
               </Link>
               <Link href={`/news/${news._id}`} className="block mb-2">
-                <strong>Content:</strong> {news.content}
+                <strong>Nội dung :</strong> {news.content}
               </Link>
               {/* Hiển thị hình ảnh nếu có */}
               {news.file && (
@@ -84,14 +84,14 @@ const News = () => {
 
               <Link href={`/news/edit/${news._id}`} className="mr-2">
                 <button className="bg-yellow-500 text-white py-1 px-2 rounded">
-                  Edit
+                  Sửa
                 </button>
               </Link>
               <button
                 onClick={() => handleDelete(news._id)}
                 className="bg-red-500 text-white py-1 px-2 rounded"
               >
-                Delete
+                Xóa
               </button>
             </div>
           </div>

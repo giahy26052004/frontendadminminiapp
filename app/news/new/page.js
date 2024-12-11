@@ -44,9 +44,11 @@ const New = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4 flex justify-center">Add News</h1>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">
+        Thêm mới tin tức
+      </h1>
       <a className="border p-3 rounded hover:bg-gray-200 " href="/">
-        Back
+        Quay lại
       </a>
       <form
         onSubmit={handleSubmit}
@@ -58,7 +60,7 @@ const New = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="News Title"
+            placeholder="Tiêu đề tin tức"
             required
             className="border border-gray-300 rounded p-2 w-full"
           />
@@ -67,7 +69,7 @@ const New = () => {
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="News Content"
+            placeholder="Nội dung tin tức"
             required
             className="border border-gray-300 rounded p-2 w-full"
           />
@@ -83,7 +85,7 @@ const New = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
         >
-          Add News
+          Thêm mới tin tức
         </button>
       </form>
     </div>

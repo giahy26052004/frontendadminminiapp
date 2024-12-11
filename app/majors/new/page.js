@@ -65,9 +65,11 @@ const AddMajor = () => {
 
   return (
     <div className="p-8 max-w-[800px] mx-auto">
-      <h1 className="text-2xl font-bold mb-6 flex justify-center">Add Major</h1>
+      <h1 className="text-2xl font-bold mb-6 flex justify-center">
+        Thêm ngành học
+      </h1>
       <a className="border p-3 rounded hover:bg-gray-200 " href="/">
-        Back
+        Quay lại
       </a>
       <form
         onSubmit={handleSubmit}
@@ -172,13 +174,11 @@ const AddMajor = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
         >
-          Add Major
+          Thêm ngành học
         </button>
       </form>
       {error && <p className="text-red-500 mt-4">{error}</p>}
-      {success && (
-        <p className="text-green-500 mt-4">Major added successfully!</p>
-      )}
+      {success && <p className="text-green-500 mt-4">Thêm thành công</p>}
     </div>
   );
 };
