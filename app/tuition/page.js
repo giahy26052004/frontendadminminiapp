@@ -15,7 +15,9 @@ const Tuition = () => {
   useEffect(() => {
     const fetchTuitionData = async () => {
       try {
-        const res = await fetch(`http://localhost:3009/api/tuition`);
+        const res = await fetch(
+          `https://backendminiapp.onrender.com/api/tuition`
+        );
         if (!res.ok) {
           throw new Error("Không thể tải dữ liệu.");
         }
@@ -53,7 +55,7 @@ const Tuition = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:3009/api/tuition/${tuitionData._id}`,
+        `https://backendminiapp.onrender.com/api/tuition/${tuitionData._id}`,
         {
           method: "PUT", // Only PUT method, no POST
           headers: {

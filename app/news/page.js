@@ -8,30 +8,43 @@ const News = () => {
   const [newsList, setNewsList] = useState([]);
   const router = useRouter();
 
+  // Fetch data when the component mounts
   useEffect(() => {
     const fetchNews = async () => {
-      console.log(process.env.API_URL);
-      const res = await fetch(`http://localhost:3009/api/news`);
+      // Nếu bạn có cấu hình API_URL trong .env, sử dụng nó thay vì hard-code URL
+      const res = await fetch(
+        `${
+          process.env.API_URL || "https://backendminiapp.onrender.com"
+        }/api/news`
+      );
       const data = await res.json();
       setNewsList(data);
     };
     fetchNews();
   }, []);
 
+  // Handle delete news item
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:3009/api/news/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${
+        process.env.API_URL || "https://backendminiapp.onrender.com"
+      }/api/news/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (res.ok) {
       setNewsList((prevNews) => prevNews.filter((news) => news._id !== id));
       alert("Deleted successfully");
       router.push("/news");
+    } else {
+      alert("Failed to delete news");
     }
   };
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4 flex justify-center">News </h1>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center">News</h1>
       <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
         Back
       </a>
@@ -54,8 +67,19 @@ const News = () => {
               <Link href={`/news/${news._id}`} className="block mb-2">
                 <strong>Content:</strong> {news.content}
               </Link>
+              {/* Hiển thị hình ảnh nếu có */}
+              {news.file && (
+                <div className="mb-2 w-[200px] h-[200px]">
+                  <strong>Image:</strong>
+                  <img
+                    src={`https://backendminiapp.onrender.com/${news.file}`} // Đảm bảo rằng bạn trả về đúng URL hình ảnh
+                    alt={news.title}
+                    className="w-full h-auto rounded"
+                  />
+                </div>
+              )}
               <Link href={`/news/${news._id}`} className="block mb-2">
-                <strong>Date:</strong> {news.date}
+                <strong>Date:</strong> {new Date(news.date).toLocaleString()}
               </Link>
 
               <Link href={`/news/edit/${news._id}`} className="mr-2">

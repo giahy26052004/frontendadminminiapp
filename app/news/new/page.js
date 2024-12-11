@@ -5,21 +5,40 @@ import { useState } from "react";
 const New = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [file, setFile] = useState(null); // Để lưu trữ file
 
+  // Xử lý thay đổi file
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]); // Lưu file chọn được
+  };
+  console.log(file);
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Tạo đối tượng FormData để gửi dữ liệu và file
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("date", new Date());
+
+    if (file) {
+      formData.append("file", file); // Thêm file vào FormData
+    }
+
     try {
-      const res = await fetch(`http://localhost:3009/api/news`, {
+      const res = await fetch("https://backendminiapp.onrender.com/api/news", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content, title, date: new Date() }),
+        body: formData, // Gửi dữ liệu dưới dạng form-data
       });
-      alert("ok");
-      window.location.href = "/news";
+
+      if (res.ok) {
+        alert("News added successfully!");
+        window.location.href = "/news"; // Chuyển hướng nếu thành công
+      } else {
+        alert("Error adding news");
+      }
     } catch (error) {
-      alert("error");
+      alert("Error: " + error.message);
     }
   };
 
@@ -32,24 +51,31 @@ const New = () => {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-md"
+        encType="multipart/form-data" // Cần thêm thuộc tính này
       >
         <div className="mb-4">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="News Name"
+            placeholder="News Title"
+            required
+            className="border border-gray-300 rounded p-2 w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="News Content"
             required
             className="border border-gray-300 rounded p-2 w-full"
           />
         </div>
         <div className="mb-4">
           <input
-            type="text"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="News content"
-            required
+            type="file"
+            onChange={handleFileChange} // Xử lý thay đổi file
             className="border border-gray-300 rounded p-2 w-full"
           />
         </div>

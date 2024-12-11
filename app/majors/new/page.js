@@ -24,17 +24,20 @@ const AddMajor = () => {
     setSuccess(false);
 
     try {
-      const res = await fetch(`http://localhost:3009/api/majors`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          khoi_nganh: khoiNganh,
-          ten_nganh: tenNganh,
-          details_nganh: details,
-        }),
-      });
+      const res = await fetch(
+        `https://backendminiapp.onrender.com/api/majors`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            khoi_nganh: khoiNganh,
+            ten_nganh: tenNganh,
+            details_nganh: details,
+          }),
+        }
+      );
 
       if (res.ok) {
         setKhoiNganh("");
