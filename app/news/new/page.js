@@ -26,7 +26,7 @@ const New = () => {
     }
 
     try {
-      const res = await fetch("https://backendminiapp.onrender.com/api/news", {
+      const res = await fetch("http://localhost:3009/api/news", {
         method: "POST",
         body: formData, // Gửi dữ liệu dưới dạng form-data
       });
