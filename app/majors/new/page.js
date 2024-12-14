@@ -24,20 +24,17 @@ const AddMajor = () => {
     setSuccess(false);
 
     try {
-      const res = await fetch(
-        `http://http://115.79.212.239:3000/:3009/api/majors`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            khoi_nganh: khoiNganh,
-            ten_nganh: tenNganh,
-            details_nganh: details,
-          }),
-        }
-      );
+      const res = await fetch(`http://115.79.212.239:3000:3009/api/majors`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          khoi_nganh: khoiNganh,
+          ten_nganh: tenNganh,
+          details_nganh: details,
+        }),
+      });
 
       if (res.ok) {
         setKhoiNganh("");

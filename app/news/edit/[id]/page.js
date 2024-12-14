@@ -15,9 +15,7 @@ const EditNews = () => {
     const fetchNews = async () => {
       if (!id) return;
 
-      const res = await fetch(
-        `http://http://115.79.212.239:3000/:3009/api/news/${id}`
-      );
+      const res = await fetch(`http://115.79.212.239:3000:3009/api/news/${id}`);
       if (res.ok) {
         const data = await res.json();
         setTitle(data.title);
@@ -47,13 +45,10 @@ const EditNews = () => {
       formData.append("file", file); // Append new file if available
     }
 
-    const res = await fetch(
-      `http://http://115.79.212.239:3000/:3009/api/news/${id}`,
-      {
-        method: "PUT",
-        body: formData,
-      }
-    );
+    const res = await fetch(`http://115.79.212.239:3000:3009/api/news/${id}`, {
+      method: "PUT",
+      body: formData,
+    });
 
     if (res.ok) {
       router.push("/news");
@@ -100,7 +95,7 @@ const EditNews = () => {
           <div className="mb-10 w-[200px] h-[200px]">
             <strong>Hình ảnh:</strong>
             <img
-              src={`http://http://115.79.212.239:3000/:3009/${newsData.file}`} // Correct URL for the image
+              src={`http://115.79.212.239:3000:3009/${newsData.file}`} // Correct URL for the image
               alt={newsData.title}
               className="w-full h-auto rounded"
             />
