@@ -26,10 +26,13 @@ const New = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3009/api/news", {
-        method: "POST",
-        body: formData, // Gửi dữ liệu dưới dạng form-data
-      });
+      const res = await fetch(
+        "http://http://115.79.212.239:3000/:3009/api/news",
+        {
+          method: "POST",
+          body: formData, // Gửi dữ liệu dưới dạng form-data
+        }
+      );
 
       if (res.ok) {
         alert("News added successfully!");

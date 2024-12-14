@@ -22,9 +22,12 @@ const EditMajor = () => {
     const fetchMajor = async () => {
       if (!id) return;
 
-      const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `http://http://115.79.212.239:3000/:3009/api/majors/${id}`,
+        {
+          method: "GET",
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         setKhoiNganh(data.khoi_nganh);
@@ -40,13 +43,16 @@ const EditMajor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ khoi_nganh, ten_nganh, details_nganh }),
-    });
+    const res = await fetch(
+      `http://http://115.79.212.239:3000/:3009/api/majors/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ khoi_nganh, ten_nganh, details_nganh }),
+      }
+    );
 
     if (res.ok) {
       router.push("/majors");
