@@ -26,7 +26,7 @@ const New = () => {
     }
 
     try {
-      const res = await fetch("http://115.79.212.239:3000:3009/api/news", {
+      const res = await fetch("http://115.79.212.239:3009/api/news", {
         method: "POST",
         body: formData, // Gửi dữ liệu dưới dạng form-data
       });
