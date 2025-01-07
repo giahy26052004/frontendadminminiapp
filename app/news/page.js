@@ -13,7 +13,11 @@ const News = () => {
     const fetchNews = async () => {
       // Nếu bạn có cấu hình API_URL trong .env, sử dụng nó thay vì hard-code URL
       const res = await fetch(
+<<<<<<< HEAD
         `${process.env.API_URL || "http://localhost:3009"}/api/news`
+=======
+        `${process.env.API_URL || "https://miniapp.hitc.edu.vn"}/api/news`
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
       );
       const data = await res.json();
       setNewsList(data);
@@ -24,7 +28,11 @@ const News = () => {
   // Handle delete news item
   const handleDelete = async (id) => {
     const res = await fetch(
+<<<<<<< HEAD
       `${process.env.API_URL || "http://localhost:3009"}/api/news/${id}`,
+=======
+      `${process.env.API_URL || "https://miniapp.hitc.edu.vn"}/api/news/${id}`,
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
       {
         method: "DELETE",
       }
@@ -68,7 +76,11 @@ const News = () => {
                 <div className="mb-2 w-[200px] h-[200px]">
                   <strong>Image:</strong>
                   <img
+<<<<<<< HEAD
                     src={`http://localhost:3009/${news.file}`} // Đảm bảo rằng bạn trả về đúng URL hình ảnh
+=======
+                    src={`https://miniapp.hitc.edu.vn/${news.file}`} // Đảm bảo rằng bạn trả về đúng URL hình ảnh
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
                     alt={news.title}
                     className="w-full h-auto rounded"
                   />

@@ -11,7 +11,11 @@ const Majors = () => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:3009/api/majors`);
+=======
+        const res = await fetch(`https://miniapp.hitc.edu.vn/api/majors`);
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
         if (!res.ok) {
           throw new Error("Failed to fetch majors");
         }
@@ -31,9 +35,18 @@ const Majors = () => {
     );
     if (confirmed) {
       try {
+<<<<<<< HEAD
         const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
           method: "DELETE",
         });
+=======
+        const res = await fetch(
+          `https://miniapp.hitc.edu.vn/api/majors/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
         if (res.ok) {
           setMajors(majors.filter((major) => major._id !== id));
         } else {

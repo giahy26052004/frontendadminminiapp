@@ -22,7 +22,11 @@ const EditMajor = () => {
     const fetchMajor = async () => {
       if (!id) return;
 
+<<<<<<< HEAD
       const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
+=======
+      const res = await fetch(`https://miniapp.hitc.edu.vn/api/majors/${id}`, {
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
         method: "GET",
       });
       if (res.ok) {
@@ -40,7 +44,11 @@ const EditMajor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
+=======
+    const res = await fetch(`https://miniapp.hitc.edu.vn/api/majors/${id}`, {
+>>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
