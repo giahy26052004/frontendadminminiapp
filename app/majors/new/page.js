@@ -24,7 +24,7 @@ const AddMajor = () => {
     setSuccess(false);
 
     try {
-      const res = await fetch(`http://115.79.212.239:3009/api/majors`, {
+      const res = await fetch(`https://miniapp.hitc.edu.vn//api/majors`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
