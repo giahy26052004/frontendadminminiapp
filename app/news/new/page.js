@@ -26,7 +26,7 @@ const New = () => {
     }
 
     try {
-      const res = await fetch("https://miniapp.hitc.edu.vn//api/news", {
+      const res = await fetch("https://miniapp.hitc.edu.vn/api/news", {
         method: "POST",
         body: formData, // Gửi dữ liệu dưới dạng form-data
       });

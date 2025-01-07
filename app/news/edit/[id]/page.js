@@ -15,7 +15,7 @@ const EditNews = () => {
     const fetchNews = async () => {
       if (!id) return;
 
-      const res = await fetch(`https://miniapp.hitc.edu.vn//api/news/${id}`);
+      const res = await fetch(`https://miniapp.hitc.edu.vn/api/news/${id}`);
       if (res.ok) {
         const data = await res.json();
         setTitle(data.title);
@@ -45,7 +45,7 @@ const EditNews = () => {
       formData.append("file", file); // Append new file if available
     }
 
-    const res = await fetch(`https://miniapp.hitc.edu.vn//api/news/${id}`, {
+    const res = await fetch(`https://miniapp.hitc.edu.vn/api/news/${id}`, {
       method: "PUT",
       body: formData,
     });
@@ -95,7 +95,7 @@ const EditNews = () => {
           <div className="mb-10 w-[200px] h-[200px]">
             <strong>Hình ảnh:</strong>
             <img
-              src={`https://miniapp.hitc.edu.vn//${newsData.file}`} // Correct URL for the image
+              src={`https://miniapp.hitc.edu.vn/${newsData.file}`} // Correct URL for the image
               alt={newsData.title}
               className="w-full h-auto rounded"
             />

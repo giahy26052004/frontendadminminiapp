@@ -15,7 +15,7 @@ const Tuition = () => {
   useEffect(() => {
     const fetchTuitionData = async () => {
       try {
-        const res = await fetch(`https://miniapp.hitc.edu.vn//api/tuition`);
+        const res = await fetch(`https://miniapp.hitc.edu.vn/api/tuition`);
         if (!res.ok) {
           throw new Error("Không thể tải dữ liệu.");
         }
@@ -53,7 +53,7 @@ const Tuition = () => {
 
     try {
       const res = await fetch(
-        `https://miniapp.hitc.edu.vn//api/tuition/${tuitionData._id}`,
+        `https://miniapp.hitc.edu.vn/api/tuition/${tuitionData._id}`,
         {
           method: "PUT", // Only PUT method, no POST
           headers: {

@@ -11,7 +11,7 @@ const Majors = () => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
-        const res = await fetch(`https://miniapp.hitc.edu.vn//api/majors`);
+        const res = await fetch(`https://miniapp.hitc.edu.vn/api/majors`);
         if (!res.ok) {
           throw new Error("Failed to fetch majors");
         }
@@ -32,7 +32,7 @@ const Majors = () => {
     if (confirmed) {
       try {
         const res = await fetch(
-          `https://miniapp.hitc.edu.vn//api/majors/${id}`,
+          `https://miniapp.hitc.edu.vn/api/majors/${id}`,
           {
             method: "DELETE",
           }
