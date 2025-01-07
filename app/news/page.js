@@ -13,7 +13,7 @@ const News = () => {
     const fetchNews = async () => {
       // Nếu bạn có cấu hình API_URL trong .env, sử dụng nó thay vì hard-code URL
       const res = await fetch(
-        `${process.env.API_URL || "http://115.79.212.239:3009"}/api/news`
+        `${process.env.API_URL || "http://localhost:3009"}/api/news`
       );
       const data = await res.json();
       setNewsList(data);
@@ -24,7 +24,7 @@ const News = () => {
   // Handle delete news item
   const handleDelete = async (id) => {
     const res = await fetch(
-      `${process.env.API_URL || "http://115.79.212.239:3009"}/api/news/${id}`,
+      `${process.env.API_URL || "http://localhost:3009"}/api/news/${id}`,
       {
         method: "DELETE",
       }
@@ -68,7 +68,7 @@ const News = () => {
                 <div className="mb-2 w-[200px] h-[200px]">
                   <strong>Image:</strong>
                   <img
-                    src={`http://115.79.212.239:3009/${news.file}`} // Đảm bảo rằng bạn trả về đúng URL hình ảnh
+                    src={`http://localhost:3009/${news.file}`} // Đảm bảo rằng bạn trả về đúng URL hình ảnh
                     alt={news.title}
                     className="w-full h-auto rounded"
                   />

@@ -22,7 +22,7 @@ const EditMajor = () => {
     const fetchMajor = async () => {
       if (!id) return;
 
-      const res = await fetch(`http://115.79.212.239:3009/api/majors/${id}`, {
+      const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
         method: "GET",
       });
       if (res.ok) {
@@ -40,7 +40,7 @@ const EditMajor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://115.79.212.239:3009/api/majors/${id}`, {
+    const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

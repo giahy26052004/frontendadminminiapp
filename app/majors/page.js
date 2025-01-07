@@ -11,7 +11,7 @@ const Majors = () => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
-        const res = await fetch(`http://115.79.212.239:3009/api/majors`);
+        const res = await fetch(`http://localhost:3009/api/majors`);
         if (!res.ok) {
           throw new Error("Failed to fetch majors");
         }
@@ -31,7 +31,7 @@ const Majors = () => {
     );
     if (confirmed) {
       try {
-        const res = await fetch(`http://115.79.212.239:3009/api/majors/${id}`, {
+        const res = await fetch(`http://localhost:3009/api/majors/${id}`, {
           method: "DELETE",
         });
         if (res.ok) {
