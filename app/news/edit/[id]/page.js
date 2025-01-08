@@ -96,7 +96,7 @@ const EditNews = () => {
           <div className="mb-10 w-[200px] h-[200px]">
             <strong>Hình ảnh:</strong>
             <img
-              src={`http://localhost:3009/${newsData.file}`} // Correct URL for the image
+              src={`https://miniapp.hitc.edu.vn/api/new/image/${newsData.file}`} // Correct URL for the image
               alt={newsData.title}
               className="w-full h-auto rounded"
             />
