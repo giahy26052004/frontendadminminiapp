@@ -26,11 +26,7 @@ const New = () => {
     }
 
     try {
-<<<<<<< HEAD
       const res = await fetch("http://localhost:3009/api/news", {
-=======
-      const res = await fetch("https://miniapp.hitc.edu.vn/api/news", {
->>>>>>> bf48ff912da3da1c6df712f2a9c69f416db503c2
         method: "POST",
         body: formData, // Gửi dữ liệu dưới dạng form-data
       });
