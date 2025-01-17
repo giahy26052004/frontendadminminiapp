@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
+
 import { FaGraduationCap, FaNewspaper, FaMoneyBill } from "react-icons/fa";
+import AuthBTn from "./AuthBTn";
 
 const Navbar = () => {
   return (
@@ -35,6 +38,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+      <AuthBTn />
     </nav>
   );
 };

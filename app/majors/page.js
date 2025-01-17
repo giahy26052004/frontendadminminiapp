@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import AuthBTn from "@/components/AuthBTn";
 
 const Majors = () => {
   const [majors, setMajors] = useState([]);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchMajors = async () => {
