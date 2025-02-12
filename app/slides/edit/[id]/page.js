@@ -15,7 +15,9 @@ const EditSlide = () => {
   useEffect(() => {
     const fetchSlide = async () => {
       const res = await fetch(
-        `${process.env.API_URL || "http://localhost:3009"}/api/slide/${id}`
+        `${
+          process.env.API_URL || "https://miniapp.hitc.edu.vn"
+        }/api/slide/${id}`
       );
       const data = await res.json();
 
@@ -47,7 +49,7 @@ const EditSlide = () => {
       formData.append("image", file); // Append the new file if available
     }
 
-    const res = await fetch(`https://miniapp.hitc.edu.vn//api/slide/${id}`, {
+    const res = await fetch(`https://miniapp.hitc.edu.vn/api/slide/${id}`, {
       method: "PUT",
       body: formData,
     });

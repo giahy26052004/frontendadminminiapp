@@ -33,7 +33,7 @@ const Majors = () => {
     if (confirmed) {
       try {
         const res = await fetch(
-          `https://miniapp.hitc.edu.vn//api/majors/${id}`,
+          `https://miniapp.hitc.edu.vn/api/majors/${id}`,
           {
             method: "DELETE",
           }

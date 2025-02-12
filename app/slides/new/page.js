@@ -24,7 +24,7 @@ const AddSlide = () => {
       formData.append("image", file); // Append the new file if available
     }
 
-    const res = await fetch(`https://miniapp.hitc.edu.vn//api/slide`, {
+    const res = await fetch(`https://miniapp.hitc.edu.vn/api/slide`, {
       method: "POST",
       body: formData,
     });
