@@ -10,7 +10,7 @@ const GiftList = () => {
   useEffect(() => {
     const fetchGifts = async () => {
       try {
-        const res = await fetch("http://localhost:3009/api/gifts");
+        const res = await fetch("https://miniapp.hitc.edu.vn/api/gifts");
         const gifts = await res.json();
 
         if (Array.isArray(gifts)) {
@@ -32,7 +32,7 @@ const GiftList = () => {
     if (!newGift.trim()) return alert("Tên quà không được để trống!");
 
     try {
-      const res = await fetch("http://localhost:3009/api/gifts", {
+      const res = await fetch("https://miniapp.hitc.edu.vn/api/gifts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newGift }),
@@ -57,7 +57,7 @@ const GiftList = () => {
     if (!confirm("Bạn có chắc muốn xóa quà này không?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3009/api/gifts/${id}`, {
+      const res = await fetch(`https://miniapp.hitc.edu.vn/api/gifts/${id}`, {
         method: "DELETE",
       });
 
