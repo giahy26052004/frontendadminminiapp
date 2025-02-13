@@ -44,6 +44,13 @@ const Navbar = () => {
             </span>
           </Link>
         </li>
+        <li>
+          <Link href="/gift">
+            <span className="flex items-center text-white bg-pink-500 hover:bg-pink-600 px-4 py-3 rounded-lg text-lg font-medium transition duration-300">
+              <FaMoneyBill className="mr-3" /> Quản lý Quà
+            </span>
+          </Link>
+        </li>
       </ul>
       <AuthBTn />
     </nav>
