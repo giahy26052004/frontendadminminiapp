@@ -59,7 +59,9 @@ const PhoneList = () => {
       <h1 className="text-2xl font-bold mb-4 text-center">
         📱 Danh sách số điện thoại
       </h1>
-
+      <a className="border p-3 rounded hover:bg-gray-200 mr-7" href="/">
+        Quay lại
+      </a>
       <button
         onClick={exportToPDF}
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600"
