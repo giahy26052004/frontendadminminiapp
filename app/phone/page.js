@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { jsPDF } from "jspdf";
+import * as XLSX from "xlsx";
 
 const PhoneList = () => {
   const [phones, setPhones] = useState([]);
 
-  // Fetch danh sách số điện thoại khi component mount
   useEffect(() => {
     const fetchPhones = async () => {
       try {
         const res = await fetch("https://miniapp.hitc.edu.vn/api/phones");
         const data = await res.json();
-        setPhones(data.data); // Đảm bảo API trả về { success: true, data: [...] }
+        setPhones(data.data);
       } catch (error) {
         console.error("Lỗi khi fetch dữ liệu:", error);
       }
@@ -20,7 +19,6 @@ const PhoneList = () => {
     fetchPhones();
   }, []);
 
-  // Xóa số điện thoại
   const handleDelete = async (id) => {
     if (!confirm("Bạn có chắc muốn xóa số này không?")) return;
 
@@ -30,9 +28,7 @@ const PhoneList = () => {
       });
 
       if (res.ok) {
-        setPhones((prevPhones) =>
-          prevPhones.filter((phone) => phone._id !== id)
-        );
+        setPhones((prevPhones) => prevPhones.filter((phone) => phone._id !== id));
         alert("Xóa thành công");
       } else {
         alert("Xóa thất bại");
@@ -42,16 +38,14 @@ const PhoneList = () => {
     }
   };
 
-  // Xuất PDF
-  const exportToPDF = () => {
-    const doc = new jsPDF();
-    doc.text("Danh sách số điện thoại", 10, 10);
-
-    phones.forEach((phone, index) => {
-      doc.text(`${index + 1}. ${phone.phone}`, 10, 20 + index * 10);
-    });
-
-    doc.save("danh-sach-so-dien-thoai.pdf");
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(phones.map((phone, index) => ({
+      "STT": index + 1,
+      "Số Điện Thoại": phone.phone,
+    })));
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách");
+    XLSX.writeFile(workbook, "danh-sach-so-dien-thoai.xlsx");
   };
 
   return (
@@ -63,10 +57,10 @@ const PhoneList = () => {
         Quay lại
       </a>
       <button
-        onClick={exportToPDF}
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600"
+        onClick={exportToExcel}
+        className="bg-green-500 text-white px-4 py-2 rounded mb-4 hover:bg-green-600"
       >
-        Xuất PDF
+        Xuất Excel
       </button>
 
       {phones.length > 0 ? (
